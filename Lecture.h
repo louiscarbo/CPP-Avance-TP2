@@ -25,7 +25,7 @@ typedef struct {
     int dataSize;
     string referer;
     string navigator;
-} Log;
+} LogLine;
 
 //------------------------------------------------------------------------
 // Rôle de la classe Lecture
@@ -39,12 +39,10 @@ class Lecture
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    LogLine getLog();
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
+    //   Retourne une structure contenant les informations du prochain log
+    //   du fichier.
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -52,15 +50,11 @@ public:
 
     Lecture ( );
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    //  Constructeur par défaut, ouvre le fichier
 
     ~Lecture ( );
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    //  Destructeur par défaut, ferme le fichier
 
 //------------------------------------------------------------------ PRIVE
 
