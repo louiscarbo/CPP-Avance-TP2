@@ -19,7 +19,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
+// type Lecture::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -36,13 +36,13 @@ Lecture::Lecture ( )
 //  filePath, attribut de la classe.
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
+    cout << "Appel au constructeur de <Lecture>" << endl;
 #endif
     fileStream.open(filePath);
     if (!fileStream.is_open()) {
         cerr << "Erreur lors de l'ouverture du fichier : " << filePath << endl;
     }
-} //----- Fin de Xxx
+} //----- Fin de Lecture
 
 
 Lecture::~Lecture ( )
@@ -50,10 +50,10 @@ Lecture::~Lecture ( )
 // Fermer le fichier fileStream, attribut de la classe.
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
+    cout << "Appel au destructeur de <Lecture>" << endl;
 #endif
     fileStream.close();
-} //----- Fin de ~Xxx
+} //----- Fin de ~Lecture
 
 //------------------------------------------------------------------ PRIVE
 
