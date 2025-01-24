@@ -5,6 +5,10 @@
 *************************************************************************/
 
 //---------- Interface de la classe Lecture (fichier Lecture.h) ----------
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <ctime>
 #if ! defined ( LECTURE_H )
 #define LECTURE_H
 
@@ -64,7 +68,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+    ifstream fileStream;
+    string filePath;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Xxx>
