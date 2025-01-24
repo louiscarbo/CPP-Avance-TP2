@@ -37,7 +37,7 @@ using namespace std;
 //-------------------------------------------- Constructeurs - destructeur
 
 Statistiques::remplirGraphe(const LogLine &log){
-    NodesPonderation[log.]
+    NodesPonderationmi.insert({log.source,0});
 }
 
 Statistiques::Statistiques ( )
