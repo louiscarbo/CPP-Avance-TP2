@@ -13,7 +13,8 @@ using namespace std;
 
 //--------------------------------------------------- Interfaces utilisées
 #include <map>
-#include <string.h>
+#include <unordered_map>
+#include <string>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -57,7 +58,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    std::map<std::string,int> NodesPonderation;
+    map<string,int> NodesPonderation;
+    unordered_map<string,unordered_map<string,int>> Graphe;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Statistiques>
