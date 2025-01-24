@@ -1,28 +1,30 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Statistiques  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 ******************************************************************** *****/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <Statistiques> (fichier Statistiques.h) ----------------
+#if ! defined ( Statistiques_H )
+#define Statistiques_H
+using namespace std;
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include <map>
+#include <string.h>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <Statistiques>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
+class Statistiques 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,27 +38,14 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
 //-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Xxx ( );
+    Statistiques ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Xxx ( );
+    virtual ~Statistiques ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -68,10 +57,10 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+    std::map<std::string,int> NodesPonderation;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------------- Autres définitions dépendantes de <Statistiques>
 
-#endif // XXX_H
+#endif // Statistiques_H
 
