@@ -47,24 +47,26 @@ public:
     //
     // Contrat :
     //
+        if (NodesPonderation.find(log.navigator)!=NodesPonderation.end())
+        {
+            NodesPonderation[log.navigator]
+        }
+        NodesPonderation[log.referer]=log.navigator;
 
     }
 
-    void generateDotFile(const std::string& filePath)
-    {
+    void generateDotFile(const string& filePath);
     // Mode d'emploi :Génère un fichier .dot pour GraphViz à partir du graphe.
     //
     // Contrat :
     //
-    }
 
-    void TopDix()
-    {
+    void TopDix();
     // Mode d'emploi :Affiche les 10 URLs les plus consultées.
     //
     // Contrat :
     //
-    }
+    
 
 
 //------------------------------------------------- Surcharge d'opérateurs
