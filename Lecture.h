@@ -13,6 +13,14 @@
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+typedef struct {
+    string ip;
+    tm timeStamp;
+    string url;
+    int returnCode;
+    int dataSize;
+    string navigator;
+} Log;
 
 //------------------------------------------------------------------------
 // Rôle de la classe Lecture
