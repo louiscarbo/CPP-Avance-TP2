@@ -19,6 +19,7 @@ typedef struct {
     string url;
     int returnCode;
     int dataSize;
+    string referer;
     string navigator;
 } Log;
 
