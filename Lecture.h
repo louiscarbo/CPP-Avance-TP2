@@ -23,7 +23,7 @@ typedef struct {
     string url;
     int returnCode;
     int dataSize;
-    string referer;
+    string source;
     string navigator;
 } LogLine;
 
@@ -39,7 +39,7 @@ class Lecture
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    LogLine getLog();
+    bool getLog(LogLine &logLine);
     // Mode d'emploi :
     //   Retourne une structure contenant les informations du prochain log
     //   du fichier.
@@ -48,7 +48,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Lecture ( );
+    Lecture (string filePath);
     // Mode d'emploi :
     //  Constructeur par défaut, ouvre le fichier
 

@@ -19,6 +19,16 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+
+bool Lecture::getLog(LogLine &logLine)
+// Algorithme :
+//  Lire une ligne du fichier fileStream, attribut de la classe.
+//  Si la lecture est un succès, retourner true et remplir la structure
+//  logLine avec les informations lues.
+{
+
+}
+
 // type Lecture::Méthode ( liste des paramètres )
 // Algorithme :
 //
@@ -30,7 +40,7 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lecture::Lecture ( )
+Lecture::Lecture (string filePath)
 // Algorithme :
 //  Ouvrir le fichier fileStream, attribut de la classe, à partir de
 //  filePath, attribut de la classe.
