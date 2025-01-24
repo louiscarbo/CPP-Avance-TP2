@@ -7,14 +7,18 @@
 ******************************************************************** *****/
 
 //---------- Interface de la classe <Statistiques> (fichier Statistiques.h) ----------------
-#if ! defined ( Statistiques_H )
-#define Statistiques_H
+#if ! defined ( STATISTIQUES_H )
+#define STATISTIQUES_H
 using namespace std;
 
 //--------------------------------------------------- Interfaces utilisées
 #include <map>
 #include <unordered_map>
 #include <string>
+
+#if ! defined ( LECTURE_H )
+    #include "Lecture.h"
+#endif
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -36,6 +40,31 @@ public:
     //
     // Contrat :
     //
+    void remplirGraphe(const LogLine &log)
+    {
+    // Mode d'emploi :Incrémente le poids de la flèche entre deux URLs.
+    // Si les URLs n’existent pas encore dans nodes, elles y sont ajoutées.
+    //
+    // Contrat :
+    //
+
+    }
+
+    void generateDotFile(const std::string& filePath)
+    {
+    // Mode d'emploi :Génère un fichier .dot pour GraphViz à partir du graphe.
+    //
+    // Contrat :
+    //
+    }
+
+    void TopDix()
+    {
+    // Mode d'emploi :Affiche les 10 URLs les plus consultées.
+    //
+    // Contrat :
+    //
+    }
 
 
 //------------------------------------------------- Surcharge d'opérateurs
