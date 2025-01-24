@@ -9,6 +9,8 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
+#include <sstream>
+#include <iostream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -26,7 +28,50 @@ bool Lecture::getLog(LogLine &logLine)
 //  Si la lecture est un succès, retourner true et remplir la structure
 //  logLine avec les informations lues.
 {
+    string line;
+    if (getline(fileStream, line)) {
+        istringstream iss(line);
+        string ip, timeStampStr, request, returnCode, dataSize, source, navigator;
+        char discard;
 
+        // Lire l'adresse IP
+        iss >> ip;
+        logLine.ip = ip;
+
+        // Ignorer les deux tirets
+        iss >> discard >> discard;
+
+        // Lire le timestamp entre crochets
+        iss >> discard; // '['
+        getline(iss, timeStampStr, ']');
+        struct tm timeStamp;
+        strptime(timeStampStr.c_str(), "%d/%b/%Y:%H:%M:%S", &timeStamp);
+        logLine.timeStamp = timeStamp;
+
+        // Lire la requête entre guillemets
+        iss >> discard; // '"'
+        getline(iss, request, '"');
+        logLine.url = request;
+
+        // Lire le code de retour et la taille des données
+        iss >> returnCode >> dataSize;
+        logLine.returnCode = stoi(returnCode);
+        logLine.dataSize = stoi(dataSize);
+
+        // Lire la source entre guillemets
+        iss >> discard; // '"'
+        getline(iss, source, '"');
+        logLine.source = source;
+
+        // Lire le navigateur entre guillemets
+        iss >> discard; // '"'
+        getline(iss, navigator, '"');
+        logLine.navigator = navigator;
+
+        return true;
+    } else {
+        return false;
+    }
 }
 
 // type Lecture::Méthode ( liste des paramètres )
