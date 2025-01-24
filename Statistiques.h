@@ -40,20 +40,13 @@ public:
     //
     // Contrat :
     //
-    void remplirGraphe(const LogLine &log)
-    {
+    void remplirGraphe(const LogLine &log);
     // Mode d'emploi :Incrémente le poids de la flèche entre deux URLs.
     // Si les URLs n’existent pas encore dans nodes, elles y sont ajoutées.
     //
     // Contrat :
     //
-        if (NodesPonderation.find(log.navigator)!=NodesPonderation.end())
-        {
-            NodesPonderation[log.navigator]
-        }
-        NodesPonderation[log.referer]=log.navigator;
 
-    }
 
     void generateDotFile(const string& filePath);
     // Mode d'emploi :Génère un fichier .dot pour GraphViz à partir du graphe.
