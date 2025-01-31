@@ -80,8 +80,9 @@ protected:
 
     string cheminFichier; // Chemin du fichier log
     string serveurURL;
+    string nomFichierDot; // Pour dotFile
     map<string, bool> optionsBool; // Pour dotFile et exclureTypes
-    map<string, int> optionsInt;   // Pour heureDep
+    int heureDep;   // Pour heureDep
     Statistiques *stats;
     unordered_set<string> formatsExclus;
 };

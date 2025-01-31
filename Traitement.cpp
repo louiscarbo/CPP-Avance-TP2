@@ -35,7 +35,7 @@ void Traitement::genererGraphe(void)
 
         finLog = lecture.getLog(logLine);
 
-        if (optionsInt["heureDep"] != -1 && logLine.timeStamp.tm_hour != optionsInt["heureDep"]) // voir la suite de la logique)
+        if (heureDep != -1 && logLine.timeStamp.tm_hour != heureDep) // voir la suite de la logique)
         {
             continue;
         }
@@ -50,7 +50,7 @@ void Traitement::genererGraphe(void)
     if (optionsBool["dotFile"])
     { // gérer les extensions
         // générer un fichier dot
-        stats->generateDotFile("achanger.dot");
+        stats->generateDotFile(nomFichierDot);
     }
 }
 
@@ -83,7 +83,7 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
         {
             optionsBool["dotFile"] = false;
             optionsBool["exclureTypes"] = false;
-            optionsInt["heureDep"] = -1;
+            heureDep = -1;
         }
 
         else
@@ -100,13 +100,14 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
                 if (arg == "-g" && i + 1 < argc)
                 {
                     optionsBool["dotFile"] = true; // Activation de l'option
+                    nomFichierDot = argv[++i];
                 }
 
                 // Gestion de l'option pour spécifier l'heure de départ
                 else if (arg == "-t" && i + 1 < argc)
                 {
-                    optionsInt["heureDep"] = stoi(argv[++i]); // Conversion en entier
-                    if (optionsInt["heureDep"] < 0 || optionsInt["heureDep"] > 23)
+                    heureDep = stoi(argv[++i]); // Conversion en entier
+                    if (heureDep < 0 || heureDep > 23)
                     {
                         cerr << "Erreur : L'heure doit être comprise entre 0 et 23." << endl;
                         exit(1);
