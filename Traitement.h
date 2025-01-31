@@ -42,7 +42,7 @@ public:
     // Contrat :
     //
 
-    void genererGraphe();
+    void construireStatistiques();
 
     void printAttributs();
 

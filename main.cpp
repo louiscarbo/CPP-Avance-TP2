@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
 
     // Effectuer le traitement
     // Par exemple, générer le graphe
-    traitement.genererGraphe();
+    traitement.construireStatistiques();
 
     return 0;
 }

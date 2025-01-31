@@ -22,7 +22,7 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void Traitement::genererGraphe(void)
+void Traitement::construireStatistiques(void)
 {
     Lecture lecture(cheminFichier, serveurURL);
     LogLine logLine;
@@ -50,6 +50,8 @@ void Traitement::genererGraphe(void)
         // générer un fichier dot
         stats->generateDotFile(nomFichierDot);
     }
+
+    stats->TopDix();
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
