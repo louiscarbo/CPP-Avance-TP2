@@ -36,12 +36,23 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Statistiques::remplirGraphe(const LogLine &log){
-    if (NodesPonderation.find(log.navigator)!=NodesPonderation.end())
-        {
-            NodesPonderation[log.navigator]
-        }
-        NodesPonderation[log.referer]=log.navigator;
+Statistiques::remplirGraphe(const LogLine &logline){
+
+    NodesPonderation.insert({logline.url, 0});
+    NodesPonderation[logline.url]++;
+
+   /* if (Graphe.find(logline.source)!=Graphe.end())
+            {
+                NodesPonderation[log.navigator]
+            }
+            NodesPonderation[log.referer]=log.navigator;*/
+
+    unordered_map<string, int> tmp;
+    tmp.insert({logline.url,0});
+    Graphe.insert({logline.source, tmp});
+    //Graphe[logline.source].insert({logline.source, })
+    Graphe[logline.source][logline.url]++;
+
 }
 
 Statistiques::Statistiques ( )
