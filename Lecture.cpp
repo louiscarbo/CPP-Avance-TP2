@@ -31,7 +31,7 @@ bool Lecture::getLog(LogLine &logLine)
     string line;
     if (getline(fileStream, line)) {
         istringstream iss(line);
-        string ip, timeStampStr, request, returnCode, dataSize, source, navigator;
+        string ip, timeStampStr, request, returnCode, dataSize, source, navigator, method, url, protocol;
         char discard;
 
         // Lire l'adresse IP
@@ -51,7 +51,23 @@ bool Lecture::getLog(LogLine &logLine)
         // Lire la requête entre guillemets
         iss >> discard; // '"'
         getline(iss, request, '"');
-        logLine.url = request;
+
+        // Extraire juste l'URL de la requête
+        istringstream requestStream(request);
+        requestStream >> method >> url >> protocol;
+        logLine.url = url;
+
+        // Extraire l'extension de l'URL
+        size_t lastDotPos = url.find_last_of('.');
+        if (lastDotPos != string::npos)
+        {
+            size_t endPos = url.find(' ', lastDotPos);
+            logLine.documentType = url.substr(lastDotPos + 1, endPos - lastDotPos - 1);
+        }
+        else
+        {
+            logLine.documentType = "";
+        }
 
         // Lire le code de retour et la taille des données
         iss >> returnCode >> dataSize;
@@ -61,6 +77,13 @@ bool Lecture::getLog(LogLine &logLine)
         // Lire la source entre guillemets
         iss >> discard; // '"'
         getline(iss, source, '"');
+
+        // Supprimer le serverURL de la source si présent
+        size_t pos = source.find(serverURL);
+        if (pos != string::npos)
+        {
+            source.erase(pos, serverURL.length());
+        }
         logLine.source = source;
 
         // Lire le navigateur entre guillemets
@@ -85,7 +108,7 @@ bool Lecture::getLog(LogLine &logLine)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lecture::Lecture (string filePath)
+Lecture::Lecture (string filePath, string serverURL)
 // Algorithme :
 //  Ouvrir le fichier fileStream, attribut de la classe, à partir de
 //  filePath, attribut de la classe.
@@ -97,6 +120,7 @@ Lecture::Lecture (string filePath)
     if (!fileStream.is_open()) {
         cerr << "Erreur lors de l'ouverture du fichier : " << filePath << endl;
     }
+    this->serverURL = serverURL;
 } //----- Fin de Lecture
 
 

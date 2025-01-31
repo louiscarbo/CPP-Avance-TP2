@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+using namespace std;
+
 #if ! defined ( LECTURE_H )
 #define LECTURE_H
 
@@ -25,6 +27,7 @@ typedef struct {
     int dataSize;
     string source;
     string navigator;
+    string documentType;
 } LogLine;
 
 //------------------------------------------------------------------------
@@ -48,7 +51,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Lecture (string filePath);
+    Lecture (string filePath, string serverURL);
     // Mode d'emploi :
     //  Constructeur par défaut, ouvre le fichier
 
@@ -63,7 +66,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
     ifstream fileStream;
-    string filePath;
+    string serverURL;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Xxx>
