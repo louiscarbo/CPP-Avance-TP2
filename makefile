@@ -27,6 +27,7 @@ sanitize: $(TARGET)
 # Clean the project
 clean:
 	rm -f $(TARGET) $(OBJS)
+	rm -f *.dot
 
 # Dependencies
 %.o: %.cpp $(HDRS)
