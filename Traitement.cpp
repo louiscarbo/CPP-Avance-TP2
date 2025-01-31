@@ -102,9 +102,10 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
             optionsBool["exclureTypes"] = true;
         } else if (arg == "-t" && i + 1 < argc - 1) {
             try {
-                cout << "Argument pour -t : " << argv[i + 1] << endl; // Message de débogage
                 heureDep = stoi(argv[++i]);
-                cout << "Option -t détectée, heure de départ : " << heureDep << endl; // Message de débogage
+                if (heureDep < 0 || heureDep > 23) {
+                    cerr << "Heure invalide pour l'option -t : " << argv[i] << endl;
+                }
             } catch (const std::invalid_argument &e) {
                 cerr << "Argument invalide pour l'option -t : " << argv[i] << endl;
                 exit(EXIT_FAILURE);
