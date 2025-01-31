@@ -43,7 +43,7 @@ public:
     // Contrat :
     //
     
-    void genererGraphe(void);
+    void genererGraphe();
 
 //------------------------------------------------- Surcharge d'opérateurs
     Traitement & operator = ( const Traitement & unTraitement );
