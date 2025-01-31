@@ -1,2 +1,6 @@
 .vscode
 *.o
+test.cpp
+tests.cpp
+test
+test.log
