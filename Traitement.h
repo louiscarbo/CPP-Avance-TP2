@@ -43,7 +43,7 @@ public:
     // Contrat :
     //
     
-    void genererGraphe(unordered_map<string, unordered_map<string, int>> &graphe);
+    void genererGraphe(unordered_map<string, unordered_map<string, int>> &graphe, Lecture &lecture, LogLine &logLine);
 
 //------------------------------------------------- Surcharge d'opérateurs
     Traitement & operator = ( const Traitement & unTraitement );
@@ -83,7 +83,7 @@ protected:
     string serveurURL;
     map<string, bool> optionsBool; // Pour dotFile et exclureTypes
     map<string, int> optionsInt;   // Pour heureDep
-    Statistiques stats;
+    Statistiques* stats;
     unordered_set<string> formatsExclus;
 
 
