@@ -43,7 +43,7 @@ public:
     // Contrat :
     //
     
-    void genererGraphe(unordered_map<string, unordered_map<string, int>> &graphe, Lecture &lecture, LogLine &logLine);
+    void genererGraphe(void);
 
 //------------------------------------------------- Surcharge d'opérateurs
     Traitement & operator = ( const Traitement & unTraitement );
