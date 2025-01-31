@@ -49,7 +49,7 @@ public:
     //
 
 
-    void generateDotFile(void);
+    void generateDotFile(string namefichier);
     // Mode d'emploi :Génère un fichier .dot pour GraphViz à partir du graphe.
     //
     // Contrat :

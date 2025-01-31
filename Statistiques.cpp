@@ -77,16 +77,29 @@ void Statistiques::remplirGraphe(const LogLine &logline){
         unordered_map<string,unordered_map<string,int>>::iterator it = Graphe.begin(); 
 
         while (it != Graphe.end()){
-            if (find(noeuds.begin(), noeuds.end(),it->first)){
-                
+            if (noeuds.size()==0){
+                noeuds.push_back(it->first);
+                fichier_w<<noeuds[i]<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
             }
-            fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
+            else if(find(noeuds.begin(), noeuds.end(), it->first) == noeuds.end()){
+                noeuds.push_back(it->first);
+                fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
+            }
+
+            else if(find(noeuds.begin(), noeuds.end(), it->first) == noeuds.end()){
+                noeuds.push_back(it->first);
+                fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
+            }
+            unordered_map<string,int>::iterator it2 = it->second.begin(); 
+            while (it2 != it->second.end()){
+                if(find(noeuds.begin(), noeuds.end(), it2->first) == noeuds.end()){
+                    noeuds.push_back(it2->first);
+                    fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
+                }
+            }
         }
 
-
-
-
-        fichier_w<<
+        fichier_w<<endl;
     }
     
     void Statistiques::TopDix()
