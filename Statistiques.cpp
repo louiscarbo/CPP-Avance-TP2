@@ -36,15 +36,15 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-void Statistiques::remplirGraphe(const LogLine &logline){
-
-    NodesPonderation.insert({logline.url, 0});
-    NodesPonderation[logline.url]++;
-    Graphe[logline.source].insert({logline.url, 0});
-    Graphe[logline.source][logline.url]++;
-
-
-}
+    void Statistiques::remplirGraphe(const LogLine &logline)
+    // Algorithme : insert va ajouter si le logline n'existe 
+    // pas et il rien fait s'il existe deja
+    {
+        NodesPonderation.insert({logline.url, 0});
+        NodesPonderation[logline.url]++;
+        Graphe[logline.source].insert({logline.url, 0});
+        Graphe[logline.source][logline.url]++;
+    }//----- Fin de Méthode remplirGraphe
 
 /*void Statistiques::remplirGraphe(const LogLine &logline) {
     // Ajouter la clé dans NodesPonderation si elle n'existe pas
@@ -64,33 +64,37 @@ void Statistiques::remplirGraphe(const LogLine &logline){
     }
     Graphe[logline.source][logline.url]++;
 }*/
-    void Statistiques::generateDotFile(string namefichier){
+    void Statistiques::generateDotFile(string namefichier)
+    {
         namefichier = namefichier + ".dot";
         ofstream fichier_w(namefichier);
 
-        if (!fichier_w) {
+        if (!fichier_w) 
+        {
             cerr << "Erreur d'ouverture du fichier !" << endl;
             return;
         }
         fichier_w<<"digraph {"<<endl;
         int i=0;
+        //Creation d'un map pour stocker les noms de noeuds
+        //Ex: (noeud1,insa.fr),(noeud2,/page1.html)
         map<string,string> noeuds;
-        unordered_map<string,unordered_map<string,int>>::iterator it = Graphe.begin(); 
+        unordered_map<string,unordered_map<string,int>>::iterator it = Graphe.begin(); //iterator
 
         while (it != Graphe.end()){
             string nom="Node";
-            if (noeuds.size()==0){
-                noeuds.insert({it->first,nom+to_string(i)});
-                fichier_w<<nom+to_string(i++)<<"[label="<<'"'<<it->first<<'"'<<"];"<<endl;
-
-            }
-            else if(find(noeuds.begin(), noeuds.end(), it->first) == noeuds.end()){
+            //on voit si le nom existe deja dans le noeuds
+            if(noeuds.size()==0 || noeuds.find(it->first) == noeuds.end())
+            {
                 noeuds.insert({it->first,nom+to_string(i)});
                 fichier_w<<nom+to_string(i++)<<"[label="<<'"'<<it->first<<'"'<<"];"<<endl;
             }
             unordered_map<string,int>::iterator it2 = it->second.begin(); 
-            while (it2 != it->second.end()){
-                if(find(noeuds.begin(), noeuds.end(), it2->first) == noeuds.end()){
+            while (it2 != it->second.end())
+            {
+                //meme l'etape que l'avant
+                if(noeuds.find(it2->first) == noeuds.end())
+                {
                     noeuds.insert({it2->first, nom+to_string(i)});
                     fichier_w<<nom+to_string(i++)<<"[label="<<'"'<<it2->first<<'"'<<"];"<<endl;
                 }
@@ -99,10 +103,8 @@ void Statistiques::remplirGraphe(const LogLine &logline){
             }
             it++;
         }
-
-
-        fichier_w<<endl;
-    }
+        fichier_w<<'}'<<endl;
+    }//----- Fin de Méthode
     
     void Statistiques::TopDix()
     {
@@ -138,7 +140,7 @@ void Statistiques::remplirGraphe(const LogLine &logline){
             cout<<"nombre d'acces"<<top[j]<<"est"<<NodesPonderation[top[j]]<<endl;
         }
 
-    }
+    }//----- Fin de Méthode
 
 
 Statistiques::Statistiques ( )
