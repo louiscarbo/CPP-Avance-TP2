@@ -17,7 +17,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Lecture.h" // Nécessaire avec l'amitié ??
+#include "Lecture.h"
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
