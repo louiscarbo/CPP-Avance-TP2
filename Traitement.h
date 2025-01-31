@@ -7,7 +7,7 @@
 ******************************************************************** *****/
 
 //---------- Interface de la classe <Traitement> (fichier Traitement.h) ----------------
-#if ! defined ( Traitement_H )
+#if !defined(Traitement_H)
 #define Traitement_H
 
 //--------------------------------------------------- Interfaces utilisées
@@ -30,66 +30,62 @@
 //
 //------------------------------------------------------------------------
 
-class Traitement 
+class Traitement
 
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
+    //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
     // Contrat :
     //
-    
+
     void genererGraphe();
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Traitement & operator = ( const Traitement & unTraitement );
+    //------------------------------------------------- Surcharge d'opérateurs
+    Traitement &operator=(const Traitement &unTraitement);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//-------------------------------------------- Constructeurs - destructeur
-    Traitement ( const Traitement & unTraitement );
+    //-------------------------------------------- Constructeurs - destructeur
+    Traitement(const Traitement &unTraitement);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Traitement (int argc, char* argv[], string unServeurURL);
+    Traitement(int argc, char *argv[], string unServeurURL);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Traitement ( );
+    virtual ~Traitement();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
+    //----------------------------------------------------- Attributs protégés
 
     string cheminFichier; // Chemin du fichier log
     string serveurURL;
     map<string, bool> optionsBool; // Pour dotFile et exclureTypes
     map<string, int> optionsInt;   // Pour heureDep
-    Statistiques* stats;
+    Statistiques *stats;
     unordered_set<string> formatsExclus;
-
-
 };
 
 //-------------------------------- Autres définitions dépendantes de <Traitement>
 
 #endif // Traitement_H
-
