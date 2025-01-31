@@ -36,24 +36,34 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Statistiques::remplirGraphe(const LogLine &logline){
+void Statistiques::remplirGraphe(const LogLine &logline){
 
     NodesPonderation.insert({logline.url, 0});
     NodesPonderation[logline.url]++;
-
-   /* if (Graphe.find(logline.source)!=Graphe.end())
-            {
-                NodesPonderation[log.navigator]
-            }
-            NodesPonderation[log.referer]=log.navigator;*/
-
-    unordered_map<string, int> tmp;
-    tmp.insert({logline.url,0});
-    Graphe.insert({logline.source, tmp});
-    //Graphe[logline.source].insert({logline.source, })
+    Graphe[logline.source].insert({logline.url, 0});
     Graphe[logline.source][logline.url]++;
 
 }
+
+/*void Statistiques::remplirGraphe(const LogLine &logline) {
+    // Ajouter la clé dans NodesPonderation si elle n'existe pas
+    if (NodesPonderation.find(logline.url) == NodesPonderation.end()) {
+        NodesPonderation[logline.url] = 0;
+    }
+    NodesPonderation[logline.url]++;
+
+    // Ajouter la clé dans Graphe si elle n'existe pas
+    if (Graphe.find(logline.source) == Graphe.end()) {
+        Graphe[logline.source] = unordered_map<string, int>();
+    }
+    
+    // Ajouter la clé logline.url dans Graphe[logline.source] si elle n'existe pas
+    if (Graphe[logline.source].find(logline.url) == Graphe[logline.source].end()) {
+        Graphe[logline.source][logline.url] = 0;
+    }
+    Graphe[logline.source][logline.url]++;
+}*/
+
 
 Statistiques::Statistiques ( )
 // Algorithme :
