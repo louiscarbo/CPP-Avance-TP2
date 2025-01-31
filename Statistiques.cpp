@@ -113,16 +113,16 @@ using namespace std;
 
         // Iterate through the map and print the elements
         while (it != NodesPonderation.end()) {
-            if (top.size()==0)
+            if (static_cast<int>(top.size())==0)
             {
                 top.push_back(it->first);
             }
             else
             {
                 int i=0,insert=0;
-                while (i<=top.size() && insert==0) 
+                while (i<=static_cast<int>(top.size()) && insert==0) 
                 {
-                    if (it->second < NodesPonderation[top[i]] && i!=top.size())
+                    if (it->second < NodesPonderation[top[i]] && i!=static_cast<int>(top.size()))
                     {
                         i++;
                     }
