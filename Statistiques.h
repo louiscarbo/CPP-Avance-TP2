@@ -40,7 +40,7 @@ public:
     //
     // Contrat :
     //
-    void remplirGraphe(const LogLine& log);
+    void remplirGraphe(const LogLine& logline);
     // Mode d'emploi :Incrémente le poids de la flèche entre deux URLs.
     // Si les URLs n’existent pas encore dans nodes, elles y sont ajoutées.
     //
@@ -59,6 +59,7 @@ public:
     //
     // Contrat :
     //
+    
     
 
 

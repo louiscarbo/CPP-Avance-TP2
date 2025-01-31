@@ -63,6 +63,41 @@ void Statistiques::remplirGraphe(const LogLine &logline){
     }
     Graphe[logline.source][logline.url]++;
 }*/
+    void Statistiques::TopDix()
+    {
+        vector<string> top;
+        map<string, int>::iterator it = NodesPonderation.begin(); //creation d'un iterateur
+
+        // Iterate through the map and print the elements
+        while (it != NodesPonderation.end()) {
+            if (top.size()==0)
+            {
+                top.push_back(it->first);
+            }
+            else
+            {
+                int i=0,insert=0;
+                while (i<=top.size() && insert==0) 
+                {
+                    if (it->second < NodesPonderation[top[i]] && i!=top.size())
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        top.insert(top.begin()+i,it->first);
+                        insert=1;
+                    }  
+                }
+            }
+            ++it;
+        }
+        for (int j=0;j<10;j++)
+        {
+            cout<<"nombre d'acces"<<top[j]<<"est"<<NodesPonderation[top[j]]<<endl;
+        }
+
+    }
 
 
 Statistiques::Statistiques ( )
