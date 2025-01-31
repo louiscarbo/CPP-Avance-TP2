@@ -20,8 +20,7 @@ int main(int argc, char* argv[]) {
 
     // Effectuer le traitement
     // Par exemple, générer le graphe
-    unordered_map<string, unordered_map<string, int>> graphe;
-    traitement.genererGraphe(graphe);
+    traitement.genererGraphe();
 
     return 0;
 }
