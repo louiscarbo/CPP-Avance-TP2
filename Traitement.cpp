@@ -76,6 +76,12 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
     cout << "Appel au constructeur de <Traitement>" << endl;
 #endif
 
+    if (argc < 2)
+    {
+        cerr << "Il n'y a pas assez d'arguments : indiquez au moins le chemin vers le fichier" << endl;
+        exit(EXIT_FAILURE);
+    }
+
     serveurURL = unServeurURL;
     cheminFichier = argv[argc - 1]; // Dernier argument : fichier log
     stats = new Statistiques(); // créer un objet statistiques
