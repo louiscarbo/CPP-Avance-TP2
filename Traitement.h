@@ -17,7 +17,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Lecture.h" // Nécessaire avec l'amitié ??
+#include "Lecture.h"
 #include "Statistiques.h"
 
 //------------------------------------------------------------- Constantes
@@ -43,8 +43,6 @@ public:
     // Contrat :
     //
     
-    friend class Lecture; // Nécessaire ?? Est-ce qu'on a besoin d'accédés aux membres protected et private ??
-
     void genererGraphe(unordered_map<string, unordered_map<string, int>> &graphe);
 
 //------------------------------------------------- Surcharge d'opérateurs
