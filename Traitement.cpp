@@ -1,12 +1,10 @@
 /*************************************************************************
-                           Traitement  -  Gestion des options en ligne de commande
+                  Traitement  -  Gestion des options en ligne de commande
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 31/01/2025
 *************************************************************************/
 
-//---------- Réalisation de la classe <Traitement> (fichier Traitement.cpp) ------------
+//--- Réalisation de la classe <Traitement> (fichier Traitement.cpp) -----
 
 //---------------------------------------------------------------- INCLUDE
 

@@ -1,12 +1,11 @@
 /*************************************************************************
-                           Traitement  -  description
+                  Traitement  -  Gestion des options en ligne de commande
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-******************************************************************** *****/
+    début                : 31/01/2025
+*************************************************************************/
 
-//---------- Interface de la classe <Traitement> (fichier Traitement.h) ----------------
+
+//----- Interface de la classe <Traitement> (fichier Traitement.h) -------
 #if !defined(Traitement_H)
 #define Traitement_H
 
@@ -26,8 +25,8 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Traitement>
-//
-//
+//  Permet de gérer les options en ligne de commande et de générer le
+//  graphe des pages web visitées.
 //------------------------------------------------------------------------
 
 class Traitement
