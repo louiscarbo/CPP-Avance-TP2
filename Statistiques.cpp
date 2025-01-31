@@ -63,6 +63,8 @@ void Statistiques::remplirGraphe(const LogLine &logline){
     }
     Graphe[logline.source][logline.url]++;
 }*/
+    void generateDotFile(const string& filePath);
+    
     void Statistiques::TopDix()
     {
         vector<string> top;
