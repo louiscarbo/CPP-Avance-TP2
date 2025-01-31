@@ -43,6 +43,7 @@ void Statistiques::remplirGraphe(const LogLine &logline){
     Graphe[logline.source].insert({logline.url, 0});
     Graphe[logline.source][logline.url]++;
 
+
 }
 
 /*void Statistiques::remplirGraphe(const LogLine &logline) {
@@ -73,31 +74,32 @@ void Statistiques::remplirGraphe(const LogLine &logline){
         }
         fichier_w<<"digraph {"<<endl;
         int i=0;
-        vector<string> noeuds;
+        map<string,string> noeuds;
         unordered_map<string,unordered_map<string,int>>::iterator it = Graphe.begin(); 
 
         while (it != Graphe.end()){
+            string nom="Node";
             if (noeuds.size()==0){
-                noeuds.push_back(it->first);
-                fichier_w<<noeuds[i]<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
-            }
-            else if(find(noeuds.begin(), noeuds.end(), it->first) == noeuds.end()){
-                noeuds.push_back(it->first);
-                fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
-            }
+                noeuds.insert({it->first,nom+to_string(i)});
+                fichier_w<<nom+to_string(i++)<<"[label="<<'"'<<it->first<<'"'<<"];"<<endl;
 
+            }
             else if(find(noeuds.begin(), noeuds.end(), it->first) == noeuds.end()){
-                noeuds.push_back(it->first);
-                fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
+                noeuds.insert({it->first,nom+to_string(i)});
+                fichier_w<<nom+to_string(i++)<<"[label="<<'"'<<it->first<<'"'<<"];"<<endl;
             }
             unordered_map<string,int>::iterator it2 = it->second.begin(); 
             while (it2 != it->second.end()){
                 if(find(noeuds.begin(), noeuds.end(), it2->first) == noeuds.end()){
-                    noeuds.push_back(it2->first);
-                    fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
+                    noeuds.insert({it2->first, nom+to_string(i)});
+                    fichier_w<<nom+to_string(i++)<<"[label="<<'"'<<it2->first<<'"'<<"];"<<endl;
                 }
+                fichier_w<<noeuds[it->first]<<" -> "<<noeuds[it2->first]<<"[label="<<'"'<<it2->second<<'"'<<"];"<<endl;
+                it2++;
             }
+            it++;
         }
+
 
         fichier_w<<endl;
     }
