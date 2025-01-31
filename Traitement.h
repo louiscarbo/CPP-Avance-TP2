@@ -44,6 +44,8 @@ public:
 
     void genererGraphe();
 
+    void printAttributs();
+
     //------------------------------------------------- Surcharge d'opérateurs
     Traitement &operator=(const Traitement &unTraitement);
     // Mode d'emploi :

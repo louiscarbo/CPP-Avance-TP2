@@ -71,63 +71,30 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
     cout << "Appel au constructeur de <Traitement>" << endl;
 #endif
 
-    {
-        serveurURL = unServeurURL;
-        cheminFichier = argv[1];    // Premier argument : fichier log
-        stats = new Statistiques(); // créer un objet statistiques
-        formatsExclus = {"jpg", "jpeg", "png", "gif", "webp", "avif", "svg", "apng", "js", "css"};
+    serveurURL = unServeurURL;
+    cheminFichier = argv[argc - 1]; // Dernier argument : fichier log
+    stats = new Statistiques(); // créer un objet statistiques
+    formatsExclus = {"jpg", "jpeg", "png", "gif", "webp", "avif", "svg", "apng", "js", "css"};
 
-        if (argc < 2)
-        {
-            optionsBool["dotFile"] = false;
-            optionsBool["exclureTypes"] = false;
-            heureDep = -1;
-        }
+    // Initialiser les options par défaut
+    optionsBool["dotFile"] = false;
+    optionsBool["exclureTypes"] = false;
+    heureDep = -1;
 
-        else
-        {
-
-            string arg;
-
-            // Parcourir les options
-            for (int i = 2; i < argc; i++)
-            {
-                arg = argv[i];
-
-                // Gestion de l'option pour générer un fichier .dot
-                if (arg == "-g" && i + 1 < argc)
-                {
-                    optionsBool["dotFile"] = true; // Activation de l'option
-                    nomFichierDot = argv[++i];
-                }
-
-                // Gestion de l'option pour spécifier l'heure de départ
-                else if (arg == "-t" && i + 1 < argc)
-                {
-                    heureDep = stoi(argv[++i]); // Conversion en entier
-                    if (heureDep < 0 || heureDep > 23)
-                    {
-                        cerr << "Erreur : L'heure doit être comprise entre 0 et 23." << endl;
-                        exit(1);
-                    }
-                }
-
-                // Gestion de l'option pour exclure les types
-                else if (arg == "-e" && i + 1 < argc)
-                {
-                    optionsBool["exclureTypes"] = true; // Activation de l'option
-                }
-
-                // Si l'option n'est pas reconnue
-                else
-                {
-                    cerr << "Option invalide : " << arg << endl;
-                    exit(1);
-                }
-            }
+    // Parcourir les arguments pour détecter les options
+    for (int i = 1; i < argc - 1; ++i) {
+        string arg = argv[i];
+        if (arg == "-g" && i + 1 < argc - 1) {
+            optionsBool["dotFile"] = true;
+            nomFichierDot = argv[++i];
+        } else if (arg == "-e") {
+            optionsBool["exclureTypes"] = true;
+        } else if (arg == "-t" && i + 1 < argc - 1) {
+            heureDep = stoi(argv[++i]);
+        } else {
+            cerr << "Option invalide : " << arg << endl;
         }
     }
-
 } //----- Fin de Traitement
 
 Traitement::~Traitement()
@@ -138,6 +105,24 @@ Traitement::~Traitement()
 #endif
     delete stats;
 } //----- Fin de ~Traitement
+
+// Fonction de test pour printer les attributs
+void Traitement::printAttributs()
+{
+    cout << "Chemin du fichier : " << cheminFichier << endl;
+    cout << "URL du serveur : " << serveurURL << endl;
+
+    cout << "Options : " << endl;
+    if (optionsBool["dotFile"]) {
+        cout << "  Générer un .dot : OUI" << endl;
+        cout << "  Nom du fichier dot : " << nomFichierDot << endl;
+    } else {
+        cout << "  Générer un .dot : NON" << endl;
+    }
+
+    cout << "  Exclure types : " << (optionsBool["exclureTypes"] ? "OUI" : "NON") << endl;
+    cout << "  Heure de départ : " << (heureDep != -1 ? to_string(heureDep) : "non spécifiée") << endl;
+}
 
 //------------------------------------------------------------------ PRIVE
 
