@@ -43,8 +43,6 @@ public:
     // Contrat :
     //
     
-    friend class Lecture; // Nécessaire ?? Est-ce qu'on a besoin d'accédés aux membres protected et private ??
-
     void genererGraphe(unordered_map<string, unordered_map<string, int>> &graphe);
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -62,7 +60,7 @@ public:
     // Contrat :
     //
 
-    Traitement (int argc, char* argv[] );
+    Traitement (int argc, char* argv[], string unServeurURL);
     // Mode d'emploi :
     //
     // Contrat :
@@ -81,11 +79,13 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 
-    string fichier; // Chemin du fichier log
+    string cheminFichier; // Chemin du fichier log
+    string serveurURL;
     map<string, bool> optionsBool; // Pour dotFile et exclureTypes
     map<string, int> optionsInt;   // Pour heureDep
     Statistiques stats;
-    unordered_set<string> formatsExclus; 
+    unordered_set<string> formatsExclus;
+
 
 };
 
