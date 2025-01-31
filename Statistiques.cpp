@@ -63,7 +63,31 @@ void Statistiques::remplirGraphe(const LogLine &logline){
     }
     Graphe[logline.source][logline.url]++;
 }*/
-    void generateDotFile(const string& filePath);
+    void Statistiques::generateDotFile(string namefichier){
+        namefichier = namefichier + ".dot";
+        ofstream fichier_w(namefichier);
+
+        if (!fichier_w) {
+            cerr << "Erreur d'ouverture du fichier !" << endl;
+            return;
+        }
+        fichier_w<<"digraph {"<<endl;
+        int i=0;
+        vector<string> noeuds;
+        unordered_map<string,unordered_map<string,int>>::iterator it = Graphe.begin(); 
+
+        while (it != Graphe.end()){
+            if (find(noeuds.begin(), noeuds.end(),it->first)){
+                
+            }
+            fichier_w<<"node"<<i<<"[label="<<'"'<<noeuds[i++]<<'"'<<"];"<<endl;
+        }
+
+
+
+
+        fichier_w<<
+    }
     
     void Statistiques::TopDix()
     {
