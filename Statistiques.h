@@ -15,6 +15,7 @@ using namespace std;
 #include <map>
 #include <unordered_map>
 #include <string>
+#include <vector>
 
 #if ! defined ( LECTURE_H )
     #include "Lecture.h"
@@ -48,7 +49,7 @@ public:
     //
 
 
-    void generateDotFile(const string& filePath);
+    void generateDotFile(void);
     // Mode d'emploi :Génère un fichier .dot pour GraphViz à partir du graphe.
     //
     // Contrat :
