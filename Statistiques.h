@@ -67,13 +67,13 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
     Statistiques ( );
-    // Mode d'emploi :
+    // Mode d'emploi : COnstructeur
     //
     // Contrat :
     //
 
     virtual ~Statistiques ( );
-    // Mode d'emploi :
+    // Mode d'emploi : Destructeur
     //
     // Contrat :
     //
