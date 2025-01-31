@@ -7,7 +7,7 @@ SANITIZE_FLAGS = -fsanitize=address -g
 TARGET = log
 
 # Source files
-SRCS = main.cpp Lecture.cpp Statistiques.cpp
+SRCS = main.cpp Lecture.cpp Statistiques.cpp Traitement.cpp
 HDRS = Lecture.h Statistiques.h Traitement.h
 
 # Object files
@@ -17,12 +17,12 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(TARGET)
 
 # Build the project
-log: $(OBJS)
+$(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $^
 
 # Build the project with fsanitize
-logS: CXXFLAGS += $(SANITIZE_FLAGS)
-logS: $(TARGET)
+sanitize: CXXFLAGS += $(SANITIZE_FLAGS)
+sanitize: $(TARGET)
 
 # Clean the project
 clean:
@@ -32,4 +32,4 @@ clean:
 %.o: %.cpp $(HDRS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-.PHONY: all log logS clean
+.PHONY: all sanitize clean

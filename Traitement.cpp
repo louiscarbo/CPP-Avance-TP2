@@ -10,6 +10,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <stdexcept> // Pour std::invalid_argument
 
 //------------------------------------------------------ Include personnel
 #include "Traitement.h"
@@ -66,6 +67,8 @@ Traitement::Traitement(const Traitement &unTraitement)
 #endif
 } //----- Fin de Traitement (constructeur de copie)
 
+#include <stdexcept> // Pour std::invalid_argument
+
 Traitement::Traitement(int argc, char *argv[], string unServeurURL)
 // Algorithme : Initialise les valeurs par défaut
 {
@@ -92,7 +95,14 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
         } else if (arg == "-e") {
             optionsBool["exclureTypes"] = true;
         } else if (arg == "-t" && i + 1 < argc - 1) {
-            heureDep = stoi(argv[++i]);
+            try {
+                cout << "Argument pour -t : " << argv[i + 1] << endl; // Message de débogage
+                heureDep = stoi(argv[++i]);
+                cout << "Option -t détectée, heure de départ : " << heureDep << endl; // Message de débogage
+            } catch (const std::invalid_argument &e) {
+                cerr << "Argument invalide pour l'option -t : " << argv[i] << endl;
+                exit(EXIT_FAILURE);
+            }
         } else {
             cerr << "Option invalide : " << arg << endl;
         }
