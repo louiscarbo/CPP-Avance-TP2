@@ -105,28 +105,41 @@ using namespace std;
         fichier_w<<'}'<<endl;
     }//----- Fin de Méthode
     
-    void Statistiques::TopDix()
-{
+    void Statistiques::TopDix() {
     using Pair = pair<int, string>; // Ponderation, Clé
-    priority_queue<Pair, vector<Pair>, less<Pair>> maxHeap;
-    // Pair : le type de la queue,
-    // vector<Pair>, contenueur
-    //greater<Pair, regle pour stocker
 
-    map<string,int>::iterator it;
-    for (it = NodesPonderation.begin(); it!=NodesPonderation.end();it++)
-    {
-        maxHeap.push({it->second, it->first});
-        if (maxHeap.size() > 10)
-            maxHeap.pop(); // On enleve les site le moins visité parmi les plus grandes
+    // Comparateur personnalisé pour créer un min-heap 
+    struct Comparateur {
+        bool operator()(const Pair& gauche, const Pair& droite) const {
+            return gauche.first > droite.first; // Min-heap : garde les 10 plus grands éléments
+        }
+    };
+
+    // Création d'une file de priorité avec un comparateur personnalisé
+    priority_queue<Pair, vector<Pair>, Comparateur> minHeap;
+
+    // Parcourir la map avec un itérateur
+    map<string, int>::iterator it;
+    for (it = NodesPonderation.begin(); it != NodesPonderation.end(); ++it) {
+        minHeap.push(make_pair(it->second, it->first));
+        if (minHeap.size() > 10)
+            minHeap.pop(); // Supprime les sites les moins visités parmi les plus grands
     }
-    
-    while (!maxHeap.empty())
-    {
-        cout << maxHeap.top().second << " (" << maxHeap.top().first <<" hits)"<< endl;
-        maxHeap.pop();
+
+    // Stocker les résultats pour les afficher dans l'ordre décroissant
+    vector<Pair> top;
+    while (!minHeap.empty()) {
+        top.push_back(minHeap.top());
+        minHeap.pop();
     }
-}//----- Fin de Méthode
+
+    // Afficher les résultats en ordre décroissant
+    reverse(top.begin(), top.end());
+
+    for (vector<Pair>::iterator jt = top.begin(); jt != top.end(); ++jt) {
+        cout << jt->second << " (" << jt->first << " hits)" << endl;
+    }
+}//----- Fin Méthode
 
 
 Statistiques::Statistiques ( )
