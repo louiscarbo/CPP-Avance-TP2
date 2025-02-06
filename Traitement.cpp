@@ -59,14 +59,6 @@ void Traitement::construireStatistiques(void)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Traitement::Traitement(const Traitement &unTraitement)
-// Algorithme : Constructeur de copie
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Traitement>" << endl;
-#endif
-} //----- Fin de Traitement (constructeur de copie)
-
 #include <stdexcept> // Pour std::invalid_argument
 
 Traitement::Traitement(int argc, char *argv[], string unServeurURL)

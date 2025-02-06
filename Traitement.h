@@ -54,11 +54,6 @@ public:
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Traitement(const Traitement &unTraitement);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
     Traitement(int argc, char *argv[], string unServeurURL);
     // Mode d'emploi :
