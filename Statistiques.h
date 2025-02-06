@@ -16,6 +16,8 @@ using namespace std;
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include <queue>
+#include <algorithm>
 
 #if ! defined ( LECTURE_H )
     #include "Lecture.h"

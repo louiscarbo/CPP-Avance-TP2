@@ -107,40 +107,27 @@ using namespace std;
     }//----- Fin de Méthode
     
     void Statistiques::TopDix()
+{
+    using Pair = pair<int, string>; // Ponderation, Clé
+    priority_queue<Pair, vector<Pair>, less<Pair>> maxHeap;
+    // Pair : le type de la queue,
+    // vector<Pair>, contenueur
+    //greater<Pair, regle pour stocker
+
+    map<string,int>::iterator it;
+    for (it = NodesPonderation.begin(); it!=NodesPonderation.end();it++)
     {
-        vector<string> top;
-        map<string, int>::iterator it = NodesPonderation.begin(); //creation d'un iterateur
-
-        // Iterate through the map and print the elements
-        while (it != NodesPonderation.end()) {
-            if (static_cast<int>(top.size())==0)
-            {
-                top.push_back(it->first);
-            }
-            else
-            {
-                int i=0,insert=0;
-                while (i<=static_cast<int>(top.size()) && insert==0) 
-                {
-                    if (it->second < NodesPonderation[top[i]] && i!=static_cast<int>(top.size()))
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        top.insert(top.begin()+i,it->first);
-                        insert=1;
-                    }  
-                }
-            }
-            ++it;
-        }
-        for (int j=0;j<10;j++)
-        {
-            cout<<"nombre d'acces"<<top[j]<<"est"<<NodesPonderation[top[j]]<<endl;
-        }
-
-    }//----- Fin de Méthode
+        maxHeap.push({it->second, it->first});
+        if (maxHeap.size() > 10)
+            maxHeap.pop(); // On enleve les site le moins visité parmi les plus grandes
+    }
+    
+    while (!maxHeap.empty())
+    {
+        cout << "nombre d'accès " << maxHeap.top().second << " est " << maxHeap.top().first << endl;
+        maxHeap.pop();
+    }
+}//----- Fin de Méthode
 
 
 Statistiques::Statistiques ( )
