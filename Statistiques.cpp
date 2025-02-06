@@ -65,7 +65,7 @@ using namespace std;
 }*/
     void Statistiques::generateDotFile(string namefichier)
     {
-        namefichier = namefichier + ".dot";
+        //namefichier = namefichier + ".dot";
         ofstream fichier_w(namefichier);
 
         if (!fichier_w) 
