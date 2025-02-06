@@ -124,7 +124,7 @@ using namespace std;
     
     while (!maxHeap.empty())
     {
-        cout << "nombre d'accès " << maxHeap.top().second << " est " << maxHeap.top().first << endl;
+        cout << maxHeap.top().second << " (" << maxHeap.top().first <<" hits)"<< endl;
         maxHeap.pop();
     }
 }//----- Fin de Méthode
