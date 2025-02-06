@@ -27,9 +27,9 @@ void Traitement::construireStatistiques(void)
 {
     Lecture lecture(cheminFichier, serveurURL);
     LogLine logLine;
-    bool finLog = false;
+    bool finLog = true;
 
-    while (!finLog) // gérer l'utilisation de l'autre classe, faut il une instance de "Lecture"
+    while (finLog) // gérer l'utilisation de l'autre classe, faut il une instance de "Lecture"
     {
 
         finLog = lecture.getLog(logLine);
@@ -42,8 +42,8 @@ void Traitement::construireStatistiques(void)
         {
             continue;
         }
-
-        stats->remplirGraphe(logLine);
+        if(finLog){
+        stats->remplirGraphe(logLine);}
     }
 
     if (optionsBool["dotFile"])

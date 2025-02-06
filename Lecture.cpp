@@ -72,7 +72,12 @@ bool Lecture::getLog(LogLine &logLine)
         // Lire le code de retour et la taille des données
         iss >> returnCode >> dataSize;
         logLine.returnCode = stoi(returnCode);
-        logLine.dataSize = stoi(dataSize);
+         if(!dataSize.empty() && all_of(dataSize.begin(), dataSize.end(), ::isdigit)){
+            logLine.dataSize = stoi(dataSize);
+        }
+        else{
+            logLine.dataSize = 0;
+        }
 
         // Lire la source entre guillemets
         iss >> discard; // '"'

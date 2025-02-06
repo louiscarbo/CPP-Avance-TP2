@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <algorithm>
 using namespace std;
 
 #if ! defined ( LECTURE_H )
