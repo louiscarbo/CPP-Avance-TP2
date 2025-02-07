@@ -1,1 +1,1 @@
-Exécuter avec `-g` sans nom de fichier → Vérifier que le programme affiche un message d’erreur clair
+Ce test vérifie le comportement du programme lorsque l'on exécute avec l'option `-g` sans spécifier le nom de fichier
