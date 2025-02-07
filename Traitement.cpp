@@ -104,6 +104,9 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
             }
         } else {
             cerr << "Option invalide : " << arg << endl;
+            if(optionsBool["dotFile"] ==false){
+                cerr<<"Le graphe n'a pas été crée, il faut donner un nom au fichier.dot"<<endl;
+            }
         }
     }
 } //----- Fin de Traitement
