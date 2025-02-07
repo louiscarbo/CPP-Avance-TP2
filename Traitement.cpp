@@ -10,7 +10,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <stdexcept> // Pour std::invalid_argument
+#include <stdexcept>
 
 //------------------------------------------------------ Include personnel
 #include "Traitement.h"
@@ -29,7 +29,7 @@ void Traitement::construireStatistiques(void)
     LogLine logLine;
     bool finLog = true;
 
-    while (finLog) // gérer l'utilisation de l'autre classe, faut il une instance de "Lecture"
+    while (finLog)
     {
 
         finLog = lecture.getLog(logLine);
@@ -43,13 +43,12 @@ void Traitement::construireStatistiques(void)
             continue;
         }
         if(finLog){
-        stats->remplirGraphe(logLine);}
+        stats->RemplirGraphe(logLine);}
     }
 
     if (optionsBool["dotFile"])
-    { // gérer les extensions
-        // générer un fichier dot
-        stats->generateDotFile(nomFichierDot);
+    {
+        stats->GenerateDotFile(nomFichierDot);
     }
 
     stats->TopDix();
@@ -58,8 +57,6 @@ void Traitement::construireStatistiques(void)
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-
-#include <stdexcept> // Pour std::invalid_argument
 
 Traitement::Traitement(int argc, char *argv[], string unServeurURL)
 // Algorithme : Initialise les valeurs par défaut
@@ -104,6 +101,9 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
             }
         } else {
             cerr << "Option invalide : " << arg << endl;
+            if(optionsBool["dotFile"] ==false){
+                cerr<<"Le graphe n'a pas été crée, il faut donner un nom au fichier.dot"<<endl;
+            }
         }
     }
 } //----- Fin de Traitement
@@ -117,7 +117,7 @@ Traitement::~Traitement()
     delete stats;
 } //----- Fin de ~Traitement
 
-// Fonction de test pour printer les attributs
+// Fonction de test pour afficher les attributs
 void Traitement::printAttributs()
 {
     cout << "Chemin du fichier : " << cheminFichier << endl;

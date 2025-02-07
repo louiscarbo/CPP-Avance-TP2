@@ -1,11 +1,7 @@
-#include "Lecture.h" // En théorie ne sera pas nécessaire au final
-#include "Statistiques.h" // En théorie ne sera pas nécessaire au final
 #include "Traitement.h"
 
-#include <map> // En théorie ne sera pas nécessaire au final
 #include <string>
 #include <iostream>
-#include  <time.h> // En théorie ne sera pas nécessaire au final
 
 using namespace std;
 

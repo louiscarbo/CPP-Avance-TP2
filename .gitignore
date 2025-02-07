@@ -4,4 +4,6 @@ test.cpp
 tests.cpp
 test
 log
+analog
 *.dot
+.DS_Store

@@ -1,12 +1,10 @@
 /*************************************************************************
-                           Statistiques  -  description
+                 Statistiques  -  Calcul des statistiques
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
-******************************************************************** *****/
+    début                : 24/01/2025
+*************************************************************************/
 
-//---------- Interface de la classe <Statistiques> (fichier Statistiques.h) ----------------
+//---- Interface de la classe <Statistiques> (fichier Statistiques.h) ----
 #if ! defined ( STATISTIQUES_H )
 #define STATISTIQUES_H
 using namespace std;
@@ -38,47 +36,26 @@ class Statistiques
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+
+    void RemplirGraphe(const LogLine& logline);
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
-    void remplirGraphe(const LogLine& logline);
-    // Mode d'emploi :Incrémente le poids de la flèche entre deux URLs.
-    // Si les URLs n’existent pas encore dans nodes, elles y sont ajoutées.
-    //
-    // Contrat :
-    //
+    //  Fournir un logline à ajouter au graphe
 
-
-    void generateDotFile(string namefichier);
-    // Mode d'emploi :Génère un fichier .dot pour GraphViz à partir du graphe.
-    //
-    // Contrat :
-    //
+    void GenerateDotFile(string namefichier);
+    // Mode d'emploi :
+    //  Fournir le nom du fichier .dot à générer, génère un fichier .dot
 
     void TopDix();
-    // Mode d'emploi :Affiche les 10 URLs les plus consultées.
-    //
-    // Contrat :
-    //
-    
-    
-
+    // Mode d'emploi :
+    //  Affiche les 10 sites les plus visités
 
 //------------------------------------------------- Surcharge d'opérateurs
 //-------------------------------------------- Constructeurs - destructeur
     Statistiques ( );
-    // Mode d'emploi : COnstructeur
-    //
-    // Contrat :
-    //
+    // Mode d'emploi : Appeler pour construire un objet
 
     virtual ~Statistiques ( );
-    // Mode d'emploi : Destructeur
-    //
-    // Contrat :
-    //
+    // Mode d'emploi : Appeler pour détruire l'objet
 
 //------------------------------------------------------------------ PRIVE
 
@@ -86,8 +63,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    map<string,int> NodesPonderation;
-    unordered_map<string,unordered_map<string,int>> Graphe;
+    map<string,int> NodesPonderation; // Stocke le nombre de visites de chaque URL
+    unordered_map<string,unordered_map<string,int>> Graphe; // Stocke les flèches entre les URLs
 };
 
 //-------------------------------- Autres définitions dépendantes de <Statistiques>
