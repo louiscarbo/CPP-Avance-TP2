@@ -1,1 +1,1 @@
-Fichier contenant des logs qui ne se trouvent pas dans le créneau
+Ce test vérifie le comportement de l'application l'option -t est utilisée et que le fichier ne contient que des logs qui ne se trouvent pas dans le créneau horaire associé à l'heure indiquée 
