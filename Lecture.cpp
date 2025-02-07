@@ -57,7 +57,12 @@ bool Lecture::getLog(LogLine &logLine)
         requestStream >> method >> url >> protocol;
         logLine.url = url;
 
-        // Extraire l'extension de l'URL
+        // Extraire l'extension de l'URL avant les paramètres (url terminant en ;<paramètres)
+        size_t paramPos = url.find(';');
+        if (paramPos != string::npos) {
+            url = url.substr(0, paramPos);
+        }
+
         size_t lastDotPos = url.find_last_of('.');
         if (lastDotPos != string::npos)
         {
