@@ -107,13 +107,6 @@ bool Lecture::getLog(LogLine &logLine)
     }
 }
 
-// type Lecture::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
