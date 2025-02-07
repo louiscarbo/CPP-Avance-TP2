@@ -77,7 +77,7 @@ Traitement::Traitement(int argc, char *argv[], string unServeurURL)
     serveurURL = unServeurURL;
     cheminFichier = argv[argc - 1]; // Dernier argument : fichier log
     stats = new Statistiques(); // créer un objet statistiques
-    formatsExclus = {"jpg", "jpeg", "png", "gif", "webp", "avif", "svg", "apng", "js", "css"};
+    formatsExclus = {"jpg", "jpeg", "png", "gif", "webp", "avif", "svg", "apng", "js", "css", "ico"};
 
     // Initialiser les options par défaut
     optionsBool["dotFile"] = false;
