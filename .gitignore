@@ -5,3 +5,4 @@ tests.cpp
 test
 log
 *.dot
+.DS_Store
