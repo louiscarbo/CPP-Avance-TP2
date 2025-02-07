@@ -4,7 +4,7 @@ CXXFLAGS = -std=c++11 -Wall -Wextra
 SANITIZE_FLAGS = -fsanitize=address -g
 
 # Target executable
-TARGET = log
+TARGET = analog
 
 # Source files
 SRCS = main.cpp Lecture.cpp Statistiques.cpp Traitement.cpp
