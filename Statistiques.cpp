@@ -51,7 +51,7 @@ void Statistiques::GenerateDotFile(string namefichier)
     while (it != Graphe.end())
     {
         string nom = "Node";
-        // on voit si le nom existe deja dans le noeuds
+        // On vérifie si le nom existe deja dans le noeud
         if (noeuds.size() == 0 || noeuds.find(it->first) == noeuds.end())
         {
             noeuds.insert({it->first, nom + to_string(i)});
@@ -60,7 +60,7 @@ void Statistiques::GenerateDotFile(string namefichier)
         unordered_map<string, int>::iterator it2 = it->second.begin();
         while (it2 != it->second.end())
         {
-            // meme l'etape que l'avant
+            // Même étape qu'avant
             if (noeuds.find(it2->first) == noeuds.end())
             {
                 noeuds.insert({it2->first, nom + to_string(i)});
@@ -99,7 +99,7 @@ void Statistiques::TopDix()
             minHeap.pop(); // Supprime les sites les moins visités parmi les plus grands
     }
 
-    // Stocker les résultats pour les afficher dans l'ordre décroissant
+    // Stockage des résultats pour les afficher dans l'ordre décroissant
     vector<Pair> top;
     while (!minHeap.empty())
     {

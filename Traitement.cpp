@@ -34,11 +34,11 @@ void Traitement::construireStatistiques(void)
 
         finLog = lecture.getLog(logLine);
 
-        if (heureDep != -1 && logLine.timeStamp.tm_hour != heureDep) // voir la suite de la logique)
+        if (heureDep != -1 && logLine.timeStamp.tm_hour != heureDep) 
         {
             continue;
         }
-        if (optionsBool["exclureTypes"] && formatsExclus.find(logLine.documentType) != formatsExclus.end()) // voir la suite de la logique
+        if (optionsBool["exclureTypes"] && formatsExclus.find(logLine.documentType) != formatsExclus.end()) 
         {
             continue;
         }
