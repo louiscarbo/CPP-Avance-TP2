@@ -1,1 +1,1 @@
-./analog -e Test12/jeudetest.log 
+../../analog -e Test12/jeudetest.log 
