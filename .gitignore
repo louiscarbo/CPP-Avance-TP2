@@ -7,3 +7,17 @@ log
 analog
 *.dot
 .DS_Store
+Tests/Test10/results.csv
+Tests/Test11/results.csv
+Tests/Test12/results.csv
+Tests/Test13/results.csv
+Tests/Test14/results.csv
+Tests/Test15/results.csv
+Tests/Test16/results.csv
+Tests/Test17/results.csv
+Tests/Test18/results.csv
+Tests/Test19/results.csv
+Tests/Test20/results.csv
+Tests/Test21/results.csv
+Tests/Test8/results.csv
+Tests/Test9/results.csv
