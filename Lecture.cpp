@@ -125,6 +125,10 @@ Lecture::Lecture (string filePath, string serverURL)
     if (!fileStream.is_open()) {
         cerr << "Erreur lors de l'ouverture du fichier : " << filePath << endl;
     }
+
+    else if (fileStream.peek() == EOF) {
+        cerr << "Erreur : Le fichier que vous tentez d'utiliser est vide" << endl;
+    }
     this->serverURL = serverURL;
 } //----- Fin de Lecture
 
