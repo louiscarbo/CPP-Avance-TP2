@@ -1,35 +1,35 @@
-# Compiler and linker
+# Compilation et édition des liens
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra
 SANITIZE_FLAGS = -fsanitize=address -g
 
-# Target executable
+# Target
 TARGET = analog
 
-# Source files
+# Fichiers sources
 SRCS = main.cpp Lecture.cpp Statistiques.cpp Traitement.cpp
 HDRS = Lecture.h Statistiques.h Traitement.h
 
-# Object files
+# Fichiers objets
 OBJS = $(SRCS:.cpp=.o)
 
-# Default target
+# Target par défaut
 all: $(TARGET)
 
-# Build the project
+# Compilation
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $^
 
-# Build the project with fsanitize
+# Compilation avec fsanitize (équivalent de valgrind pour macOS)
 sanitize: CXXFLAGS += $(SANITIZE_FLAGS)
 sanitize: $(TARGET)
 
-# Clean the project
+# Clean le projet
 clean:
 	rm -f $(TARGET) $(OBJS)
 	rm -f *.dot
 
-# Dependencies
+# Dépendances
 %.o: %.cpp $(HDRS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
