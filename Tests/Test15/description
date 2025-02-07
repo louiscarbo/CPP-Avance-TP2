@@ -1,3 +1,1 @@
-Combinaison [-t heure] et [-e] → Vérifier que seuls les logs filtrés par heure et ne contenant pas d’images/CSS/JS sont conservés
-On compare avec le test précedent pour voir s'il enlève les formats exclus.
-
+Ce test vérifie le comportement de l'application lorsque l'on combine les options -t et -e
