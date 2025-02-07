@@ -122,13 +122,18 @@ Lecture::Lecture (string filePath, string serverURL)
     fileStream.open(filePath);
     if (!fileStream.is_open()) {
         cerr << "Erreur lors de l'ouverture du fichier : " << filePath << endl;
-    }
-
-    else if (fileStream.peek() == EOF) {
+        if (errno == EACCES) {
+            cerr << "Erreur lors de l'ouverture du fichier : " << filePath << " - Permission refusée." << endl;
+        } else if (errno == ENOENT) {
+            cerr << "Erreur lors de l'ouverture du fichier : " << filePath << " - Fichier non trouvé." << endl;
+        } else {
+            cerr << "Erreur lors de l'ouverture du fichier : " << filePath << " - Erreur inconnue (errno: " << errno << ")." << endl;
+        }
+        } else if (fileStream.peek() == EOF) {
         cerr << "Erreur : Le fichier que vous tentez d'utiliser est vide" << endl;
-    }
-    this->serverURL = serverURL;
-} //----- Fin de Lecture
+        }
+        this->serverURL = serverURL;
+    } //----- Fin de Lecture
 
 
 Lecture::~Lecture ( )
