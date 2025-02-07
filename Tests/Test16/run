@@ -1,1 +1,1 @@
-./analog -g court.dot test.log
+./analog -g court.dot Test16/jeudetest.log
